@@ -1,0 +1,50 @@
+<html>
+        <head>
+                <link rel="stylesheet" href="styles.css">
+        </head>
+    <body>
+        <h1>
+                <a href="/"> Home </a>
+                &nbsp  
+                <a href="/listtasks">List Tasks</a>
+                &nbsp  
+                <a href="/newtask">New Tasks</a>
+                &nbsp  
+                <a href="/deletetasks">Delete Tasks</a>
+                &nbsp  
+                <a href="/deletecomplete">Delete Completed Tasks</a>
+                &nbsp  
+                <a href="/updatetasks">Update Task Status</a>
+                &nbsp  
+                <a href="/listdevelopers">List Developers</a>
+                &nbsp  
+                <a href="/newdeveloper">New Developers</a>
+        </h1>
+        <h2>
+        <form action="/newdeveloper" method="POST">
+        First Name <input type = "text" name = "firstName" />
+        <br>
+        Last Name <input type = "text" name = "lastName" />
+        <br>
+        Level 
+        <font color = "red"> <small> 
+        BEGINNER <input type = "checkbox" name = "level" value = "BEGINNER" /> 
+        EXPERT <input type = "checkbox" name = "level" value = "EXPERT" /> 
+        </font> </small>
+        <br>
+        Address
+        <br>
+        <small>
+        State <input type = "text" name = "state" />
+        <br>
+        Suburb <input type = "text" name = "suburb" />
+        <br>
+        Street <input type = "text" name = "street" />
+        <br>
+        Unit <input type = "number" name = "unit" />
+        </small>
+        </h2>
+        <button>submit</button>
+        </form>
+    </body>
+</html>
