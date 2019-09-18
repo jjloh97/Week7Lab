@@ -130,6 +130,25 @@ app.get('/newtask', function(req,res){
     res.sendFile(viewsPath+"newtask.html");
 });
 
+app.get('/fourtasks', function(req,res){
+    // let id = getnewRandomId();
+    let taskone = {taskId: getnewRandomId(), taskName: 'taskone', assignTo: '5d783dedf26a203b841f1994', dueDate: '11-09-2019', taskStatus: 'complete', taskDescription: 'testing'};
+    let tasktwo = {taskId: getnewRandomId(), taskName: 'tasktwo', assignTo: '5d783dedf26a203b841f1994', dueDate: '11-09-2019', taskStatus: 'complete', taskDescription: 'testing'};
+    let taskthree = {taskId: getnewRandomId(), taskName: 'taskthree', assignTo: '5d783dedf26a203b841f1994', dueDate: '11-09-2019', taskStatus: 'complete', taskDescription: 'testing'};
+    let taskfour = {taskId: getnewRandomId(), taskName: 'taskfour', assignTo: '5d783dedf26a203b841f1994', dueDate: '11-09-2019', taskStatus: 'complete', taskDescription: 'testing'};
+
+    Tasks.insertMany([taskone, tasktwo, taskthree, taskfour], function(err, doc){
+        console.log(doc);
+        res.redirect('/listtasks');
+    });
+});
+
+app.get('/test', function(req,res){
+    Developers.findOne({level: 'BEGINNER'}, 'id', function(err,developers){
+    console.log(developers);
+    });
+});
+
 app.get('/listtasks', function(req,res){
     Tasks.find({}).exec(function (err, data) {
     res.render('listtasks', { tasks: data });
@@ -160,12 +179,19 @@ app.get('/deletetasks', function(req,res){
     res.sendFile(viewsPath+"deletetasks.html");
 });
 
+// app.get('/deletecomplete', function(req,res){
+//     Tasks.deleteMany({taskStatus: 'complete'}, function(err, doc){
+//         console.log(doc);
+//         res.redirect('/listtasks');
+//     });
+// });
+
 app.get('/deletecomplete', function(req,res){
-    Tasks.deleteMany({taskStatus: 'complete'}, function(err, doc){
-        console.log(doc);
+    Tasks.deleteMany({taskStatus: 'complete'}).exec();
         res.redirect('/listtasks');
     });
-});
+
+
 
 app.post('/updatetasks', function(req,res){
     let upd = {taskId:parseInt(req.body.taskId)};
@@ -192,3 +218,7 @@ app.get('/deletedevelopers', function(req,res){
 });
 
 app.listen(8080);
+
+//git clone <enter respotitory> 
+//http://35.201.29.153:8080/ 
+
